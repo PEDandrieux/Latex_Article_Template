@@ -1,0 +1,84 @@
+\ProvidesPackage{style_article}
+%% PACKAGES %% 
+\RequirePackage{graphicx}
+\RequirePackage{caption}
+\RequirePackage{subcaption} % Add subcaption package
+\RequirePackage{mathptmx}
+\RequirePackage{geometry}
+\RequirePackage{setspace}
+\RequirePackage{lineno}
+\RequirePackage{fontspec}
+\RequirePackage{titlesec}
+\RequirePackage{hyperref} % Required for link
+\RequirePackage{xcolor} % Required for link color/table color
+\RequirePackage{soul}
+\RequirePackage{pdfpages} % Required for adding PDF
+\RequirePackage{fancyhdr}
+\RequirePackage{lineno} % Package for line number with a switch option
+\RequirePackage[backend=biber, style=nature]{biblatex}
+\RequirePackage{enumitem}
+\RequirePackage{comment} % Multi-line comments
+\RequirePackage{tabularx} % For table 
+\RequirePackage{pdflscape}
+\RequirePackage[nameinlink, noabbrev]{cleveref}
+\RequirePackage{listings} % For code insertion
+\RequirePackage{float} % For numbering supplementary
+
+%% INLINE ATTRIBUTES %%
+% Page attributes
+\geometry{left=25mm, right=25mm, top=25mm,  bottom=25mm}
+\doublespacing
+% Main font
+\setmainfont{Times New Roman}
+% Foot page number
+\pagestyle{fancy}
+\fancypagestyle{plain}{}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+% Titles
+\titleformat{\section}{\normalfont\fontsize{12}{0}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{0}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{12}{0}\bfseries}{\thesubsubsection}{1em}{}
+\titlespacing{\section}{0pt}{2em}{0em}
+\titlespacing{\subsection}{0pt}{2em}{0em}
+\titlespacing{\subsubsection}{0pt}{1em}{0em}
+% Indentation
+\setlength{\parindent}{0pt}
+% Link
+\urlstyle{same}
+\hypersetup{colorlinks=true,
+     linkcolor=blue,
+     citecolor=black,
+     urlcolor=blue}
+% Bibliography
+\addbibresource{references.bib}
+% List
+\setlist[itemize]{itemsep=0em, parsep=0em, topsep=0em, partopsep=0em}
+% Figure caption
+\captionsetup{justification=justified, singlelinecheck=false}
+% Appendix / Supplementary materials
+\newfloat{supplementary}{htbp}{loa}
+\floatname{supplementary}{Appendix}
+\crefname{supplementary}{Appendix}{Appendices}
+% Redefine the cleveref names for capitalized references
+\crefname{figure}{Figure}{Figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+\crefname{section}{Section}{Sections}
+\Crefname{section}{Section}{Sections}
+\crefname{equation}{Equation}{Equations}
+\Crefname{equation}{Equation}{Equations}
+
+%% SPECIFIC COMMANDS %%
+\newcommand{\affiliation}[2]{
+    \begin{singlespace}  
+        \textit{\textsuperscript{#1} #2} 
+    \end{singlespace}
+    } %Affiliation command
+\newcommand{\highlight}[2]{\sethlcolor{#1}\hl{#2}} %Highlight command
+\newcommand{\meanstd}[2]{#1 $\pm$ #2} %Mean ± sd command
+\newcommand{\res}[4]{#1, 95\% CI #2 to #3; p=#4} %Result command p>0.05
+\newcommand{\ress}[3]{#1, 95\% CI #2 to #3; p<0.05} %Result command p<0.05
+
